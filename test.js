@@ -13,6 +13,6 @@ var obj1 = {
         b: 'b2',
     }
 }
-Object.deepAssign(obj1, obj2)
+l_deepAssign(obj1, obj2)
 console.log(obj1)
 console.log(obj2)
