@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        this.Object.prototype.deepAssign = function () {
+            function type(str) {
+                return Object.prototype.toString.call(str).slice(8, -1)
+            }
+            function deepAssign() {
+                let argus = Object.values(arguments),
+                    obj = argus.shift()
+                argus.forEach(v => {
+                    for (let [key, val] of Object.entries(v)) {
+                        type(obj[key]) == 'Object' && type(val) == 'Object' ?
+                            obj[key] = deepAssign(obj[key], val) :
+                            obj[key] = val
+                    }
+                });
+                return obj
+            }
+            return deepAssign(...Object.values(arguments))
+        }
+        var obj1 = {
+            a: 'a1',
+            obj: {
+                a: 'a1'
+            }
+        }, obj2 = {
+            a: 'a2',
+            b: 'b2',
+            obj: {
+                a: 'a2',
+                b: 'b2',
+            }
+        }, obj3 = {
+            a: 'a3',
+            b: 'b3',
+            c: 'c3',
+            obj: {
+                a: 'a3',
+                b: 'b3',
+                c: 'c3'
+            }
+        }
+        Object.deepAssign(obj2, obj1)
+        console.log(obj1)
+        console.log(obj2)
+    </script>
+</body>
+
+</html>

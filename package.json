@@ -1,6 +1,6 @@
 {
 	"name": "lzc-js",
-	"version": "1.0.14",
+	"version": "1.0.15",
 	"description": "[![NPM version](https://img.shields.io/npm/v/lzc-js.svg)](https://www.npmjs.com/package/lzc-js)",
 	"main": "index.js",
 	"bin": {},
